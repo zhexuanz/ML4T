@@ -43,7 +43,7 @@ def gambling_simulator(win_prob,n,stop_amount,winnings,sim_count,total):
         won = get_spin_result(win_prob)
         if won:
             winnings[sim_count][i] = winnings[sim_count][i-1] + bet_amount            
-            if winnings[sim_count][i] > 80:
+            if winnings[sim_count][i] >= 80:
                 winnings[sim_count][i+1:] = winnings[sim_count][i]
                 break
             bet_amount = 1
@@ -83,10 +83,11 @@ def test_code():
     # figure 2: plot mean, mean \pm std of 1000 paths
     winnings = np.zeros((1000,n+1))
     for i in xrange(1000):        
-        gambling_simulator(win_prob,n,stop_amount,winnings,i,-1)        
+        gambling_simulator(win_prob,n,stop_amount,winnings,i,-1)   
     avg = np.mean(winnings,axis=0)    
     std = np.std(winnings,axis=0)    
     mdn = np.median(winnings,axis=0)    
+    print avg[-1]
     plt.plot(x,avg,x,avg-std,'--',x,avg+std,'--')    
     plt.xlim(0, 300)
     plt.ylim(-256, 100) 
