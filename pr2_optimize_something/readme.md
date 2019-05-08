@@ -1,6 +1,6 @@
 # Project 2: Optimize Something
 
-##Test case
+## Test case  
 Start Date: 2008-06-01  
 End Date: 2009-06-01  
 Symbols: ['IBM', 'X', 'GLD', 'JPM']  
